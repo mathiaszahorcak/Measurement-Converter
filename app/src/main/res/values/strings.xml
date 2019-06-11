@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Conversor de Medidas</string>
+    <string name="imgDescBackground">Background poligonal colorido</string>
+    <string name="txtBtnConventer">CONVERTER</string>
+    <string name="txtViewMoeda">Escolha uma moeda</string>
+    <string name="txtMoedaReal">Real</string>
+    <string name="txtMoedaDolar">Dolar</string>
+    <string name="txtViewMoeda2">Escolha a moeda para conversão</string>
+    <string name="HintTxtValor">Insira um valor (Ex: 13.78)</string>
+    <string name="txtMetro">Metro</string>
+    <string name="txtQuilometros">Quilômetro</string>
+    <string name="txtMilha">Milha</string>
+    <string name="txtBtnMoneyconverter">CONVERSOR DE MOEDA</string>
+    <string name="txtBtnMetricConverter">CONVERSOR DE MEDIDAS</string>
+</resources>
