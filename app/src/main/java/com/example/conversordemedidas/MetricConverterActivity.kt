@@ -10,7 +10,8 @@ class MetricConverterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_metric_converter)
 
-
+        //tornar o botão de voltar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return if(item?.itemId == android.R.id.home){
