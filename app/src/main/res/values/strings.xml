@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Conversor de Medidas</string>
+    <string name="app_name">Conversor</string>
     <string name="imgDescBackground">Background poligonal colorido</string>
     <string name="txtBtnConventer">CONVERTER</string>
     <string name="txtViewMoeda">Escolha uma moeda</string>
@@ -12,4 +12,7 @@
     <string name="txtMilha">Milha</string>
     <string name="txtBtnMoneyconverter">CONVERSOR DE MOEDA</string>
     <string name="txtBtnMetricConverter">CONVERSOR DE MEDIDAS</string>
+    <string name="txtMain">ESCOLHA O QUE DESEJA CONVERTER</string>
+    <string name="txtLaranjoDescription">Imagem do Laranjo \"Fazendo Mágica\"</string>
+    <string name="txtBtnEspecial">ESPECIAL</string>
 </resources>

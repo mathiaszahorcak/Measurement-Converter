@@ -1,7 +1,7 @@
 package com.example.conversordemedidas
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.RadioButton
 import android.widget.Toast
@@ -55,17 +55,20 @@ class MetricConverterActivity : AppCompatActivity() {
         }
 
         btnConverter.setOnClickListener {
-            var rdBtn: RadioButton = findViewById(rdGroupMoeda1.checkedRadioButtonId)
-            val medida1: String = rdBtn.text as String
-            rdBtn = findViewById(rdGroupMoeda2.checkedRadioButtonId)
-            val medida2: String = rdBtn.text as String
-            val medida = "$medida1-$medida2"
-            medida.toLowerCase()
+            try{
+                var rdBtn: RadioButton = findViewById(rdGroupMoeda1.checkedRadioButtonId)
+                val medida1: String = rdBtn.text as String
+                rdBtn = findViewById(rdGroupMoeda2.checkedRadioButtonId)
+                val medida2: String = rdBtn.text as String
+                val medida = "$medida1-$medida2"
+                medida.toLowerCase()
 
-            val valor = editTxtValor.text.toString().toDouble()
-            txtViewConversao.text = converterMedida(medida, valor)
+                val valor = editTxtValor.text.toString().toDouble()
+                txtViewConversao.text = converterMedida(medida, valor)
+            } catch (e: Exception){
+                Toast.makeText(this, "Insira algum valor!", Toast.LENGTH_SHORT).show()
+            }
         }
-
     }
 
     private fun converterMedida(medida: String, valor: Double): String {

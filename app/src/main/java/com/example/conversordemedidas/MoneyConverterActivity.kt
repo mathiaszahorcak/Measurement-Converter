@@ -1,7 +1,7 @@
 package com.example.conversordemedidas
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.RadioButton
 import android.widget.Toast
@@ -30,17 +30,20 @@ class MoneyConverterActivity : AppCompatActivity() {
         }
 
         btnConverter.setOnClickListener {
-            var rdBtn: RadioButton = findViewById(rdGroupMoeda1.checkedRadioButtonId)
-            val moeda1: String = rdBtn.text as String
-            rdBtn = findViewById(rdGroupMoeda2.checkedRadioButtonId)
-            val moeda2: String = rdBtn.text as String
-            val moeda = "$moeda1-$moeda2"
-            moeda.toLowerCase()
+            try{
+                var rdBtn: RadioButton = findViewById(rdGroupMoeda1.checkedRadioButtonId)
+                val moeda1: String = rdBtn.text as String
+                rdBtn = findViewById(rdGroupMoeda2.checkedRadioButtonId)
+                val moeda2: String = rdBtn.text as String
+                val moeda = "$moeda1-$moeda2"
+                moeda.toLowerCase()
 
-            val valor = editTxtValor.text.toString().toDouble()
-            txtViewConversao.text = converterMoeda(moeda, valor)
+                val valor = editTxtValor.text.toString().toDouble()
+                txtViewConversao.text = converterMoeda(moeda, valor)
+            } catch (e: Exception){
+                Toast.makeText(this, "Insira algum valor!", Toast.LENGTH_SHORT).show()
+            }
         }
-
     }
     private fun converterMoeda(moeda: String, valor: Double): String {
         val currencyMap = HashMap<String, Double>()
