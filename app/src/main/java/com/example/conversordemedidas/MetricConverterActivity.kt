@@ -3,6 +3,9 @@ package com.example.conversordemedidas
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_metric_converter.*
@@ -18,45 +21,44 @@ class MetricConverterActivity : AppCompatActivity() {
         //tornar o botão de voltar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        rdBtnMetros.setOnClickListener{
-            if (rdBtnMetro2.isChecked){
-                rdBtnQuilometro2.isChecked = true
-            }
-        }
+        var moeda1 = ""
+        var moeda2 = ""
+        val medidasSelection = arrayOf(
+            "Metro",
+            "Quilômetro",
+            "Milha"
+        )
 
-        rdBtnQuilometros.setOnClickListener {
-            if (rdBtnQuilometros.isChecked){
-                rdBtnMilha2.isChecked = true
-            }
-        }
+        val adapter = ArrayAdapter(this,
+            android.R.layout.simple_dropdown_item_1line,
+            medidasSelection)
 
-        rdBtnMilha.setOnClickListener{
-            if (rdBtnMilha2.isChecked){
-                rdBtnMetro2.isChecked = true
-            }
-        }
+        // adicionar o modelo spinner com a lista de valores para o spinner
+        sMoeda1.adapter = adapter
+        sMoeda2.adapter = adapter
 
-        rdBtnMetro2.setOnClickListener {
-            if (rdBtnMetros.isChecked){
-                rdBtnQuilometros.isChecked = true
-            }
-        }
+        fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-        rdBtnQuilometro2.setOnClickListener {
-            if (rdBtnQuilometros.isChecked){
-                rdBtnMilha.isChecked = true
-            }
-        }
+            // pegar o valor de texto do item selecionado no spinner
+            val selectedItem = parent!!.getItemAtPosition(position).toString()
 
-        rdBtnMilha2.setOnClickListener {
-            if (rdBtnMilha.isChecked){
-                rdBtnMetros.isChecked = true
+            // para cada posição, iremos adicionar uma explicação
+            when(position){
+                0 -> {
+                    moeda1 = medidasSelection[0]
+                }
+                1 -> {
+                    moeda1 = medidasSelection[1]
+                }
+                2 -> {
+                    moeda1 = medidasSelection[2]
+                }
             }
         }
 
         btnConverter.setOnClickListener {
             try{
-                var rdBtn: RadioButton = findViewById(rdGroupMoeda1.checkedRadioButtonId)
+
                 val medida1: String = rdBtn.text as String
                 rdBtn = findViewById(rdGroupMoeda2.checkedRadioButtonId)
                 val medida2: String = rdBtn.text as String

@@ -7,89 +7,97 @@
         android:layout_height="match_parent"
         tools:context=".MetricConverterActivity">
 
-        <ImageView
-                android:layout_width="464dp"
-                android:layout_height="277dp" app:srcCompat="@drawable/background" android:id="@+id/imgViewBackground"
-                android:scaleType="fitStart" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                android:contentDescription="@string/imgDescBackground" app:layout_constraintHorizontal_bias="0.132"/>
-        <TextView
-                android:layout_width="133dp"
-                android:layout_height="50dp" android:id="@+id/txtViewConversao"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout2" android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/imgViewBackground"
-                android:layout_marginStart="8dp" android:textAlignment="center" android:textStyle="bold"
-                android:textSize="24sp" android:typeface="normal" android:fontFamily="sans-serif"/>
-        <Button
-                android:text="@string/txtBtnConventer"
-                android:layout_width="124dp"
-                android:layout_height="34dp" android:id="@+id/btnConverter"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout2" android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" android:layout_marginTop="260dp"
-                app:layout_constraintTop_toTopOf="@+id/imgViewBackground"
-                android:background="@android:color/holo_green_light"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                style="@style/Widget.AppCompat.Button.Colored"/>
-        <LinearLayout
-                android:orientation="vertical"
+    <ImageView
+            android:layout_width="464dp"
+            android:layout_height="277dp" app:srcCompat="@drawable/background" android:id="@+id/imgViewBackground"
+            android:scaleType="fitStart" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/imgDescBackground" app:layout_constraintHorizontal_bias="0.132"/>
+    <TextView
+            android:layout_width="133dp"
+            android:layout_height="50dp" android:id="@+id/txtViewConversao"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/imgViewBackground"
+            android:layout_marginStart="8dp" android:textAlignment="center" android:textStyle="bold"
+            android:textSize="24sp" android:typeface="normal" android:fontFamily="sans-serif"/>
+    <Button
+            android:text="@string/txtBtnConventer"
+            android:layout_width="124dp"
+            android:layout_height="34dp" android:id="@+id/btnConverter"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2" android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" android:layout_marginTop="260dp"
+            app:layout_constraintTop_toTopOf="@+id/imgViewBackground"
+            android:background="@android:color/holo_green_light"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            style="@style/Widget.AppCompat.Button.Colored"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/linearLayout2">
+        <View
+                android:id="@+id/divider"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/linearLayout2">
-            <View
-                    android:id="@+id/divider"
+                android:layout_height="282dp"
+                android:background="?android:attr/listDivider"
+                tools:layout_editor_absoluteY="16dp" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:text="@string/txtViewMoeda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/txtViewMoeda1"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/sMoeda1" android:spinnerMode="dropdown"
+                android:visibility="visible"/>
+        <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/rdGroupMoeda1">
+            <RadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="282dp"
-                    android:background="?android:attr/listDivider"
-                    tools:layout_editor_absoluteY="16dp" tools:layout_editor_absoluteX="8dp"/>
-            <TextView
-                    android:text="@string/txtViewMoeda"
+                    android:layout_height="wrap_content" android:id="@+id/rdBtnMetros" android:checked="true"
+                    android:text="@string/txtMetro"/>
+            <RadioButton
+                    android:text="@string/txtQuilometros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/rdBtnQuilometros"
+                    android:layout_weight="1"/>
+            <RadioButton
+                    android:text="@string/txtMilha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/rdBtnMilha" android:layout_weight="1"/>
+        </RadioGroup>
+        <TextView
+                android:text="@string/txtViewMoeda2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/txtViewMoeda2"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/sMoeda2" android:spinnerMode="dropdown"
+                android:visibility="visible"/>
+        <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/rdGroupMoeda2">
+            <RadioButton
+                    android:text="@string/txtMetro"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/txtViewMoeda1"/>
-            <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/rdGroupMoeda1">
-                <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/rdBtnMetros" android:checked="true"
-                        android:text="@string/txtMetro"/>
-                <RadioButton
-                        android:text="@string/txtQuilometros"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/rdBtnQuilometros"
-                        android:layout_weight="1"/>
-                <RadioButton
-                        android:text="@string/txtMilha"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/rdBtnMilha" android:layout_weight="1"/>
-            </RadioGroup>
-            <TextView
-                    android:text="@string/txtViewMoeda2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/txtViewMoeda2"/>
-            <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/rdGroupMoeda2">
-                <RadioButton
-                        android:text="@string/txtMetro"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/rdBtnMetro2"/>
-                <RadioButton
-                        android:text="@string/txtQuilometros"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/rdBtnQuilometro2" android:layout_weight="1"
-                        android:checked="true"/>
-                <RadioButton
-                        android:text="@string/txtMilha"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/rdBtnMilha2" android:layout_weight="1"/>
-            </RadioGroup>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:ems="10"
-                    android:id="@+id/editTxtValor" android:hint="@string/HintTxtValor"/>
-        </LinearLayout>
+                    android:layout_height="wrap_content" android:id="@+id/rdBtnMetro2"/>
+            <RadioButton
+                    android:text="@string/txtQuilometros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/rdBtnQuilometro2" android:layout_weight="1"
+                    android:checked="true"/>
+            <RadioButton
+                    android:text="@string/txtMilha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/rdBtnMilha2" android:layout_weight="1"/>
+        </RadioGroup>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/editTxtValor" android:hint="@string/HintTxtValor"/>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
