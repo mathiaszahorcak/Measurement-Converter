@@ -6,7 +6,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.RadioButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_metric_converter.*
 import java.math.RoundingMode
@@ -21,8 +20,8 @@ class MetricConverterActivity : AppCompatActivity() {
         //tornar o botão de voltar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        var moeda1 = ""
-        var moeda2 = ""
+        var medida1 = ""
+        var medida2 = ""
         val medidasSelection = arrayOf(
             "Metro",
             "Quilômetro",
@@ -34,34 +33,38 @@ class MetricConverterActivity : AppCompatActivity() {
             medidasSelection)
 
         // adicionar o modelo spinner com a lista de valores para o spinner
-        sMoeda1.adapter = adapter
-        sMoeda2.adapter = adapter
+        sMedida1.adapter = adapter
+        sMedida2.adapter = adapter
 
-        fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        /* Spinner action*/
+        sMedida1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
 
-            // pegar o valor de texto do item selecionado no spinner
-            val selectedItem = parent!!.getItemAtPosition(position).toString()
+            override fun onNothingSelected(parent: AdapterView<*>?) {
 
-            // para cada posição, iremos adicionar uma explicação
-            when(position){
-                0 -> {
-                    moeda1 = medidasSelection[0]
-                }
-                1 -> {
-                    moeda1 = medidasSelection[1]
-                }
-                2 -> {
-                    moeda1 = medidasSelection[2]
-                }
             }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                /* Pega item na posicao selecionada */
+                medida1 = sMedida1.selectedItem.toString()
+            }
+
+        }
+
+        sMedida2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                /* Pega item na posicao selecionada */
+                medida2 = sMedida2.selectedItem.toString()
+            }
+
         }
 
         btnConverter.setOnClickListener {
             try{
-
-                val medida1: String = rdBtn.text as String
-                rdBtn = findViewById(rdGroupMoeda2.checkedRadioButtonId)
-                val medida2: String = rdBtn.text as String
                 val medida = "$medida1-$medida2"
                 medida.toLowerCase()
 
@@ -88,20 +91,22 @@ class MetricConverterActivity : AppCompatActivity() {
         val valorMedida: Double = valor
         var valorConvertido = (0).toDouble()
 
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+
         if(valorMedida.toString().isNotEmpty()){
             for ((k, v) in currencyMap)
             {
                 if (k == medida) {
                     valorConvertido = valorMedida * v
-                    Toast.makeText(this, "$valorConvertido", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, df.format(valorConvertido), Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
             Toast.makeText(this, "Insira um valor válido!", Toast.LENGTH_SHORT).show()
             return "Insira um valor válido! $valorConvertido"
         }
-        val df = DecimalFormat("#.####")
-        df.roundingMode = RoundingMode.CEILING
+
         return df.format(valorConvertido)
     }
 
